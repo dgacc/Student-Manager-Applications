@@ -17,6 +17,8 @@ public class MainFrame extends JFrame{
 	private JPanel jpMain;
 	private JTextField jtfSeach;
 	public CardLayout card;
+	JLayeredPane pane = getLayeredPane();
+
 	
 	Login login;
 	CreateAccount create;
@@ -26,7 +28,8 @@ public class MainFrame extends JFrame{
 	Group_03 group;
 
 	public MainFrame() {
-		create = new CreateAccount();
+		
+				create = new CreateAccount();
 		login = new Login();
 		admin = new Admin();
 		student = new Student();
@@ -87,12 +90,13 @@ public class MainFrame extends JFrame{
 		setResizable(false);
 		setMinimumSize(new Dimension(1200, 700));
 		setJMenuBar(jmbMenu);
-		add(jpMain);
+		pane.add(jpMain);
 		
 		int x = X;
 		int y = Y - jmbMenu.getHeight();
-		jpMain.setSize(x, y);
+//		jpMain.setSize(x, y);
 		jpMain.setLayout(card);
+		jpMain.setBounds(0, jmbMenu.getHeight(),x, y);
 		
 		jpMain.add(login, "Login");
 		login.runLogin(x, y, this);
@@ -184,6 +188,8 @@ public class MainFrame extends JFrame{
 				super.mouseClicked(e);
 			}
 		});
+		
+		
 		
 	}
 	

@@ -28,7 +28,7 @@ public class Login extends JPanel{
 		jbForgotPass = new JButton("Forgot PassWord");
 		
 		jlTitle = new JLabel("Ứng dụng quản lý sinh viên");
-		jlTitle1 = new JLabel("Nhóm 03 - 20171");
+//		jlTitle1 = new JLabel("Nhóm 03 - 20171");
 		jlGoiY = new JLabel("Vui lòng đăng nhập để vào hệ thống ! Nếu chưa có TK bấm CreateID để tạo ms!");
 		jlUser = new JLabel("UserName:"); 
 		jlPass = new JLabel("PassWord:");
@@ -59,50 +59,60 @@ public class Login extends JPanel{
 		jlTitle.setHorizontalAlignment((int) CENTER_ALIGNMENT);
 		jlTitle.setVerticalAlignment((int) CENTER_ALIGNMENT);
 		
-		jpHeader.add(jlTitle1);
-		jlTitle1.setFont(new Font("Arial", 1, x/60));
-		jlTitle1.setBounds(x/6, 60, x*2/3, 50);
-		jlTitle1.setForeground(Color.WHITE);
-		jlTitle1.setHorizontalAlignment((int) CENTER_ALIGNMENT);
-		
+//		jpHeader.add(jlTitle1);
+//		jlTitle1.setFont(new Font("Arial", 1, 20));
+//		jlTitle1.setBounds(x/6, 30, x*2/3, 50);
+//		jlTitle1.setForeground(Color.WHITE);
+//		jlTitle1.setHorizontalAlignment((int) CENTER_ALIGNMENT);
+//		
 		
 		
 		add(jlGoiY);
-		jlGoiY.setBounds(x/5, 3*y/4, x*2/3, 50);
+		jlGoiY.setBounds(x/5, 3*y/4 + 50, x*2/3, 50);
 		jlGoiY.setFont(new Font("Arial", 1, x/64));
-		jlGoiY.setForeground(Color.RED);
+		jlGoiY.setForeground(new Color(98, 86, 86));
 		
 		add(jlUser);
-		jlUser.setBounds(x/6, y/3, x/7, 50);
+		jlUser.setBounds(x/2 - x/6, y/3, x/7, 50);
 		jlUser.setFont(new Font("Arial", 1, 20));
 		jlUser.setIcon(new ImageIcon("icon/username.png"));
 		
 		add(jtfUser);
-		jtfUser.setBounds(x/3, y/3, x/4, 50);
+		jtfUser.setBounds(x/2 - x/6, y/3 + 50, x/3, 50);
 		jtfUser.setFont(new Font("Arial", 1, 15));
-		jtfUser.setText("hongocvan");
+		jtfUser.setText("20154000");
+		jtfUser.setHorizontalAlignment((int)CENTER_ALIGNMENT);
 		
 		add(jlPass);
-		jlPass.setBounds(x/6, y/3+50, x/7, 50);
+		jlPass.setBounds(x/2- x/6, y/3+90, x/7, 50);
 		jlPass.setFont(new Font("Arial", 1, 20));
 		jlPass.setIcon(new ImageIcon("icon/password.png"));
 		
 		add(jpfPass);
-		jpfPass.setBounds(x/3, y/3+50, x/2, 50);
+		jpfPass.setBounds(x/2 - x/6, y/3 + 130, x/3, 50);
 		jpfPass.setFont(new Font("Arial", 1, 15));
-		jpfPass.setText("Hovan2512");
+		jpfPass.setText("20154000");
+		jpfPass.setHorizontalAlignment((int) CENTER_ALIGNMENT);
 		
 		add(jbLogIn);
-		jbLogIn.setBounds(x/5, y/3+100, x/8, 50);
+		jbLogIn.setBounds(x/2 - x/6, y/3+200, x/6 - 3, 50);
 		jbLogIn.setFont(new Font("Arial", 1, 20));
+		jbLogIn.setBackground(new Color(0, 170, 207));
+		jbLogIn.setForeground(Color.white);
 		
 		add(jbCreateID);
-		jbCreateID.setBounds(x/3+50, y/3+100, x/8, 50);
+		jbCreateID.setBounds(x/2 + 3, y/3+200, x/6 - 3, 50);
 		jbCreateID.setFont(new Font("Arial", 1, 20));
+		jbCreateID.setBackground(new Color(0, 170, 207));
+		jbCreateID.setForeground(Color.white);
 		
 		add(jbForgotPass);
-		jbForgotPass.setBounds(x/2+50, y/3+200, x/4, 50);
+		jbForgotPass.setBounds(x/2 - x/6, y/3+270, x/3, 50);
 		jbForgotPass.setFont(new Font("Arial", 1, 20));
+		jbForgotPass.setHorizontalAlignment((int) CENTER_ALIGNMENT);
+		jbForgotPass.setBackground(new Color(0, 170, 207));
+		jbForgotPass.setForeground(Color.white);
+		
 		
 		jbLogIn.addActionListener(new ActionListener() {
 			@Override
