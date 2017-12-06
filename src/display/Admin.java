@@ -1,16 +1,22 @@
 package display;
 
-import javax.swing.*;
-import java.awt.*;
+import java.awt.CardLayout;
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import control.*;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+
+import control.AccountControl;
 import object.AccountObject;
-import object.StudentClassObject;
 
 public class Admin extends JPanel{
-	private JPanel jpLeft, jpRight;
+	private JPanel jpLeft, jpRight, jpHeader;
 	private JLabel jlIcon1, jlIcon2, jlIcon3;
 	private JButton jbInf, jbStudent, jbAccount, jbSubJect, jbClass, jbLogOut, jbChangePass;
 	
@@ -28,6 +34,7 @@ public class Admin extends JPanel{
 	public Admin() {
 		jpLeft = new JPanel();
 		jpRight = new JPanel();
+		jpHeader = new JPanel();
 		
 		jlIcon1 = new JLabel();
 		jlIcon1.setIcon(new ImageIcon("icon/linhtinh/word.png"));
@@ -65,20 +72,25 @@ public class Admin extends JPanel{
 		
 		add(jpLeft);
 		jpLeft.setLayout(null);
-		jpLeft.setBounds(0, 0, x/5, y);
-		jpLeft.setBackground(Color.black);
+		jpLeft.setBounds(0, 0 ,x/6, y );
+		jpLeft.setBackground(Color.WHITE);
+		
+		jpLeft.add(jpHeader);
+		jpHeader.setLayout(null);
+		jpHeader.setSize(x/6, y/10);
+		jpHeader.setBackground(new Color(0, 170, 207));
 		
 		//them icon ban do the gioi
-		jpLeft.add(jlIcon1);
-		jlIcon1.setBounds(10, 10, 128, 128);
+//		jpLeft.add(jlIcon1);
+//		jlIcon1.setBounds(10, 10, 128, 128);
 		
 		//them icon chiec but
-		jpLeft.add(jlIcon2);
-		jlIcon2.setBounds(140, 10, 64, 64);
+//		jpLeft.add(jlIcon2);
+//		jlIcon2.setBounds(140, 10, 64, 64);
 		
 		//them icon quyen sach
-		jpLeft.add(jlIcon3);
-		jlIcon3.setBounds(30, y*3/4, 128, 128);
+//		jpLeft.add(jlIcon3);
+//		jlIcon3.setBounds(30, y*3/4, 128, 128);
 		
 		jpLeft.add(jbInf);
 		jbInf.setBounds(jpLeft.getWidth()/10, jpLeft.getHeight()/4, jpLeft.getWidth()*4/5, 30);
@@ -110,7 +122,7 @@ public class Admin extends JPanel{
 		
 		add(jpRight);
 		jpRight.setLayout(card);
-		jpRight.setBounds(x/5, 0, x*4/5, y);
+		jpRight.setBounds(x/6 + 10, 0, x*5/6 - 40, y);
 		
 		jpRight.add(information, "Information");
 		information.runInformation(jpRight.getWidth(), jpRight.getHeight());

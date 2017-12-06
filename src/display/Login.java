@@ -20,8 +20,11 @@ public class Login extends JPanel{
 	StudentControl studentControl;
 	
 	public Login() {
+		jlIcon = new JLabel();
+		jlIcon.setIcon(new ImageIcon("icon/frame/education.png"));
 		jtfUser = new JTextField();
 		jpfPass = new JPasswordField();
+		
 		
 		jbLogIn = new JButton("LogIn");
 		jbCreateID = new JButton("CreateID");
@@ -32,8 +35,7 @@ public class Login extends JPanel{
 		jlGoiY = new JLabel("Vui lòng đăng nhập để vào hệ thống ! Nếu chưa có TK bấm CreateID để tạo ms!");
 		jlUser = new JLabel("UserName:"); 
 		jlPass = new JLabel("PassWord:");
-		jlIcon = new JLabel();
-		jlIcon.setIcon(new ImageIcon("icon/frame/education.png"));
+	
 		jpHeader = new JPanel();
 		
 		accountControl = new AccountControl();
@@ -59,6 +61,8 @@ public class Login extends JPanel{
 		jlTitle.setHorizontalAlignment((int) CENTER_ALIGNMENT);
 		jlTitle.setVerticalAlignment((int) CENTER_ALIGNMENT);
 		
+		
+		
 //		jpHeader.add(jlTitle1);
 //		jlTitle1.setFont(new Font("Arial", 1, 20));
 //		jlTitle1.setBounds(x/6, 30, x*2/3, 50);
@@ -80,7 +84,7 @@ public class Login extends JPanel{
 		add(jtfUser);
 		jtfUser.setBounds(x/2 - x/6, y/3 + 50, x/3, 50);
 		jtfUser.setFont(new Font("Arial", 1, 15));
-		jtfUser.setText("20154000");
+		jtfUser.setText("tran");
 		jtfUser.setHorizontalAlignment((int)CENTER_ALIGNMENT);
 		
 		add(jlPass);
@@ -91,7 +95,7 @@ public class Login extends JPanel{
 		add(jpfPass);
 		jpfPass.setBounds(x/2 - x/6, y/3 + 130, x/3, 50);
 		jpfPass.setFont(new Font("Arial", 1, 15));
-		jpfPass.setText("20154000");
+		jpfPass.setText("a");
 		jpfPass.setHorizontalAlignment((int) CENTER_ALIGNMENT);
 		
 		add(jbLogIn);
@@ -134,7 +138,8 @@ public class Login extends JPanel{
 						StudentObject st = studentControl.loadStudent(account.getIdAccount());
 						if(st.getEducate() == 1) {
 							mainFrame.student.getJtpMain().addTab("registration", mainFrame.student.registration);
-							mainFrame.student.registration.runRegistration(mainFrame.student.getJtpMain().getWidth(), mainFrame.student.getJtpMain().getHeight(), mainFrame.student);
+							mainFrame.student.registration.runRegistration(mainFrame.student.getJtpMain().getWidth(),
+									mainFrame.student.getJtpMain().getHeight(), mainFrame.student);
 							mainFrame.student.registration.loadRegistrationTable(mainFrame.student.getStudent());
 							mainFrame.student.transcript.loadTranscriptTable(mainFrame.student.getStudent());
 						}

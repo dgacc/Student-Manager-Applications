@@ -32,7 +32,7 @@ public class Student extends JPanel{
 		setLayout(null);
 		
 		add(jtpMain);
-		jtpMain.setBounds(0, 0, x, y-30);
+ 		jtpMain.setBounds(0, 0, x, y-30);
 		jtpMain.setTabPlacement(javax.swing.JTabbedPane.BOTTOM);
 		
 		jtpMain.addTab("information", information);

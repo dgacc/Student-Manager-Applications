@@ -2,7 +2,7 @@ package object;
 
 import java.sql.Date;
 
-public class StudentClassObject {
+public class StudentClassObject  {
 	private int idClass;
 	private String educate;
 	private int idSubject;

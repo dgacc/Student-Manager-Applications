@@ -17,8 +17,10 @@ import object.AccountObject;
 import object.StudentObject;
 
 public class StudentManage extends JPanel{
+	
+	private JPanel jpTableStudent, jpleft, jpright, jpCenter, jpHeader; 
 	private JComboBox jcbNganh, jcbKhoa, jcbLop, jcbCourse, jcbSpecialized, jcbClass, jcbEducate;
-	private JLabel jlTitle, jlId, jlName, jlCourse, jlSpecialized, jlClass, jlEducate;
+	private JLabel jlTitle, jlId, jlName, jlCourse, jlSpecialized, jlClass, jlEducate ;
 	private JTextField jtfId, jtfName;
 	private JTable jtbStudentManage;
 	private JButton jbAddStudent, jbChange, jbDeleteStudent;
@@ -59,9 +61,60 @@ public class StudentManage extends JPanel{
 	private String courseValue[] = {"All", "61", "60" , "59"};
 	private String educateValue[] = {"He Dao Tao TC", "He Nien Che"};
 	private String value[] = {"All"};
+	private JLabel jlUser, jlPass, jlGtinh, jlNgaysinh, jlQueQuan, jlEmail, jlSdt;
+	private JTextField jtfUser,jtfQueQuan, jtfEmail, jtfSdt;
+	private JPasswordField jpfPass;
+	private JButton jbCreate, jbClear, jbCancel;
+	private JComboBox jcbSex, jcbDay, jcbMonth, jcbYear;
+	private DefaultComboBoxModel sexModel, dayModel, monthModel, yearModel;
+	private String sex[] = {"Nam", "Nu", "Khac"};
+	private String day[] = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", 
+							"16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31"};
+	private String month[] = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"};
+	private String year[] = {"1987", "1988", "1989", "1990", "1991", "1992", "1993", "1994", "1995", "1996", "1997", "1998", "1999", "2000", "2001"};
+	String url, user, pass;
 	int count = 1;
 	
 	public StudentManage() {
+		jlUser = new JLabel("UserName:"); 
+		jlPass = new JLabel("PassWord:");
+		jlGtinh = new JLabel("Sex:");
+		jlNgaysinh = new JLabel("DateOfBirthday:"); 
+		jlQueQuan = new JLabel("Address:");
+		jlEmail = new JLabel("Email:"); 
+		jlSdt = new JLabel("Phone:");
+		
+		sexModel = new DefaultComboBoxModel<>(sex);
+		dayModel = new DefaultComboBoxModel<>(day);
+		monthModel = new DefaultComboBoxModel<>(month);
+		yearModel = new DefaultComboBoxModel<>(year);
+		
+		jcbSex = new JComboBox<>();
+		jcbSex.setModel(sexModel);
+		jcbDay = new JComboBox<>();
+		jcbDay.setModel(dayModel);
+		jcbMonth = new JComboBox<>();
+		jcbMonth.setModel(monthModel);
+		jcbYear = new JComboBox<>();
+		jcbYear.setModel(yearModel);
+		
+		jtfUser = new JTextField(); 
+		jtfQueQuan = new JTextField(); 
+		jtfEmail = new JTextField(); 
+		jtfSdt = new JTextField(); 
+		jpfPass = new JPasswordField();
+		
+		jbCreate = new JButton("Create");
+		jbClear = new JButton("Clear");
+		
+		studentControl = new StudentControl();
+		accountControl = new AccountControl();
+		
+		jpTableStudent = new JPanel();
+		jpleft = new JPanel();
+		jpright = new JPanel();
+		jpHeader = new JPanel();
+		jpCenter = new JPanel();
 		jcbNganh = new JComboBox(specializedValue);
 		jcbKhoa = new JComboBox(courseValue);
 		jcbLop = new JComboBox();
@@ -107,80 +160,192 @@ public class StudentManage extends JPanel{
 		setSize(x, y);
 		setLayout(null);
 		
-		add(jlTitle);
-		jlTitle.setFont(new Font("Arial", 1, x/35));
-		jlTitle.setBounds(x/3, 0, x/3, 30);
 		
-		add(jlId);
-		jlId.setFont(new Font("Arial", 1, 14));
-		jlId.setBounds(10, y-240, x/7, 30);
-		
-		add(jtfId);
-		jtfId.setFont(new Font("Arial", 1, 14));
-		jtfId.setBounds(x/6 , y-240, x/5, 30);
-		
-		add(jlName);
-		jlName.setFont(new Font("Arial", 1, 14));
-		jlName.setBounds(10, y-190, x/7, 30);
-		
-		add(jtfName);
-		jtfName.setFont(new Font("Arial", 1, 14));
-		jtfName.setBounds(x/6, y-190, x/5, 30);
-		
-		add(jlCourse);
-		jlCourse.setFont(new Font("Arial", 1, 14));
-		jlCourse.setBounds(10, y-140, x/7, 30);
-		
-		add(jcbCourse);
-		jcbCourse.setBounds(x/6, y-140, x/5, 30);
-		
-		add(jlSpecialized);
-		jlSpecialized.setFont(new Font("Arial", 1, 14));
-		jlSpecialized.setBounds(x/2, y-240, x/7, 30);
-		
-		add(jcbSpecialized);
-		jcbSpecialized.setBounds(x*2/3, y-240, x/5, 30);
-		
-		add(jlClass);
-		jlClass.setFont(new Font("Arial", 1, 14));
-		jlClass.setBounds(x/2, y-190, x/7, 30);
-		
-		add(jcbClass);
-		jcbClass.setModel(classModel);
-		jcbClass.setBounds(x*2/3, y-190, x/5, 30);
-		
-		add(jlEducate);
-		jlEducate.setFont(new Font("Arial", 1, 14));
-		jlEducate.setBounds(x/2, y-140, x/7, 30);
-		
-		add(jcbEducate);
-		jcbEducate.setBounds(x*2/3, y-140, x/5, 30);
-		
-		add(jcbNganh);
-		jcbNganh.setBounds(10, 50, 250, 20);
-		
-		add(jcbKhoa);
-		jcbKhoa.setBounds(300, 50, 100, 20);
-		
-		add(jcbLop);
-		jcbLop.setModel(lopModel);
-		jcbLop.setBounds(450, 50, 100, 20);
 		
 		add(jcpStudent);
-		jcpStudent.setBounds(0, 80, x, y-330);
+		jcpStudent.setBounds(0, y /2 + 20, x, y/2 - 30);
 		
 		
-		add(jbAddStudent);
-		jbAddStudent.setBounds(x/5, y - 80, x/5-20, 30);
+		
+		
+		add(jpTableStudent);
+		jpTableStudent.setLayout(null);
+		jpTableStudent.setBackground( new Color(0, 170, 207));
+		jpTableStudent.setBounds(0, y/2 - 20, x, 80);
+		
+		jpTableStudent.add(jcbNganh);
+		jcbNganh.setBounds(10, 10, 250, 20);
+		
+		jpTableStudent.add(jcbKhoa);
+		jcbKhoa.setBounds(300, 10, 100, 20);
+		
+		jpTableStudent.add(jcbLop);
+		jcbLop.setModel(lopModel);
+		jcbLop.setBounds(450, 10, 100, 20);
+		
+	
+		
+		
+		
+		
+		add(jpHeader);
+		jpHeader.setLayout(null);
+		jpHeader.setSize(x, y/10);
+		jpHeader.setBackground(new Color(0, 170, 207));
+		
+		jpHeader.add(jlTitle);
+		jlTitle.setFont(new Font("Arial", 1, 30));
+		jlTitle.setBounds(x/3, 0, x/3, 30);
+		jlTitle.setForeground(Color.WHITE);
+		jlTitle.setHorizontalAlignment((int) CENTER_ALIGNMENT);
+		
+//		
+		
+
+	    add(jpleft);
+	    jpleft.setLayout(null);
+	    jpleft.setBackground(Color.WHITE);
+	    jpleft.setBounds(0, y/8, x /3 - 10,y/3);
+	
+	    jpleft.add(jlId);
+		jlId.setFont(new Font("Arial", 1, 14));
+		jlId.setBounds(10, 60, x/10, 20);
+		
+		jpleft.add(jtfId);
+		jtfId.setFont(new Font("Arial", 1, 14));
+		jtfId.setBounds( x/10 + 10, 60, x/5, 20);
+		
+		
+		
+		
+		
+		jpleft.add(jlEducate);
+		jlEducate.setFont(new Font("Arial", 1, 14));
+		jlEducate.setBounds(10, 100, x/10, 20);
+		
+		jpleft.add(jcbEducate);
+		jcbEducate.setBounds( x/10 + 10, 100, x/5, 20);
+		
+		jpleft.add(jlSpecialized);
+		jlSpecialized.setFont(new Font("Arial", 1, 14));
+		jlSpecialized.setBounds(10, 140, x/10, 20);
+		
+		jpleft.add(jcbSpecialized);
+		jcbSpecialized.setBounds( x/10 + 10, 140, x/5, 20);
+		
+		jpleft.add(jlCourse);
+		jlCourse.setFont(new Font("Arial", 1, 14));
+		jlCourse.setBounds(10, 180, x/10, 30);
+		
+		jpleft.add(jcbCourse);
+		jcbCourse.setBounds( x/10 + 10, 180, x/5, 20);
+		
+
+		jpleft.add(jlClass);
+		jlClass.setFont(new Font("Arial", 1, 14));
+		jlClass.setBounds(10, 220, x/10, 20);
+		
+		jpleft.add(jcbClass);
+		jcbClass.setModel(classModel);
+		jcbClass.setBounds(x/10 + 10, 220, x/5, 20);
+		
+ 
+		
+		
+		
+		
+		
+	    
+	    add(jpright);
+	    jpright.setLayout(null);
+	    jpright.setBackground(Color.WHITE);
+	    jpright.setBounds(2*x/3, y/8, x /3 - 10,y/3);
+	    
+	    jpright.add(jlUser);
+		jlUser.setBounds(10, 60, x/10, 20);
+		jlUser.setFont(new Font("Arial", 1, 14));
+
+		jpright.add(jtfUser);
+		jtfUser.setBounds( x/10 + 10, 60, x/5, 20);
+		jtfUser.setFont(new Font("Arial", 1, 15));
+		
+		jpright.add(jlPass);
+		jlPass.setBounds(10, 100, x/10, 20);
+		jlPass.setFont(new Font("Arial", 1, 14));
+		
+		jpright.add(jpfPass);
+		jpfPass.setBounds( x/10 + 10, 100, x/5, 20);
+		jpfPass.setFont(new Font("Arial", 1, 15));
+		
+		jpright.add(jbAddStudent);
+		jbAddStudent.setBounds(10, 140, x/9 - 20 , 20);
 		jbAddStudent.setFont(new Font("Arial", 1, 15));
 		
-		add(jbChange);
-		jbChange.setBounds(x*2/5 + 10, y - 80, x/5 -10, 30);
+		jpright.add(jbChange);
+		jbChange.setBounds(x/9 , 140, x/9 - 20, 20);
 		jbChange.setFont(new Font("Arial", 1, 15));
 		
-		add(jbDeleteStudent);
-		jbDeleteStudent.setBounds(x*3/5 + 20, y - 80, x/5, 30);
+		jpright.add(jbDeleteStudent);
+		jbDeleteStudent.setBounds(2*x/9 - 10 , 140, x/9 - 20, 20);
 		jbDeleteStudent.setFont(new Font("Arial", 1, 15));
+		
+	
+		add(jpCenter);
+		jpCenter.setLayout(null);
+		jpCenter.setBackground(Color.WHITE);
+		jpCenter.setBounds(x/ 3, y/8, x /3 - 10,y/3);
+		
+		jpCenter.add(jlName);
+		jlName.setFont(new Font("Arial", 1, 14));
+		jlName.setBounds(10, 60, x/10, 20);
+		
+		jpCenter.add(jtfName);
+		jtfName.setFont(new Font("Arial", 1, 14));
+		jtfName.setBounds( x/10 + 10, 60, x/5, 30);
+
+		jpCenter.add(jlGtinh);
+		jlGtinh.setBounds(10, 100, x/10, 30);
+		jlGtinh.setFont(new Font("Arial", 1, 20));
+//		jlGtinh.setIcon(new ImageIcon("icon/add/gt.png"));
+		
+		jpCenter.add(jcbSex);
+		jcbSex.setBounds( x/10 + 10, 100, x/5, 20);
+		jcbSex.setFont(new Font("Arial", 1, 13));
+		
+		jpCenter.add(jlNgaysinh);
+		jlNgaysinh.setBounds(10, 140, x/10, 20);
+		jlNgaysinh.setFont(new Font("Arial", 1, 14));
+//		jlNgaysinh.setIcon(new ImageIcon("icon/add/date.png"));
+		
+		jpCenter.add(jcbDay);
+		jcbDay.setBounds( x/10 + 10, 140, x/12, 20);
+		jcbDay.setFont(new Font("Arial", 1, 13));
+		
+		jpCenter.add(jcbMonth);
+		jcbMonth.setBounds( x/10 + 10, 140, x/12, 20);
+		jcbMonth.setFont(new Font("Arial", 1, 13));
+		
+		jpCenter.add(jcbYear);
+		jcbYear.setBounds( x/10 + 10, 140, x/12, 20);
+		jcbYear.setFont(new Font("Arial", 1, 13));
+		
+		jpCenter.add(jlQueQuan);
+		jlQueQuan.setBounds(10, 180, x/10, 20);
+		jlQueQuan.setFont(new Font("Arial", 1, 14));
+//		jlQueQuan.setIcon(new ImageIcon("icon/add/address.png"));
+		
+		jpCenter.add(jtfQueQuan);
+		jtfQueQuan.setBounds( x/10 + 10, 180, x/5, 20);
+		jtfQueQuan.setFont(new Font("Arial", 1, 14));
+		
+		jpCenter.add(jlEmail);
+		jlEmail.setBounds(10, 220, x/10, 20);
+		jlEmail.setFont(new Font("Arial", 1, 14));
+//		jlEmail.setIcon(new ImageIcon("icon/add/mail.png"));
+		
+		jpCenter.add(jtfEmail);
+		jtfEmail.setBounds( x/10 + 10, 220, x/5, 20);
+		jtfEmail.setFont(new Font("Arial", 1, 14));
 		
 		loadStudentTable();
 		newTable();
@@ -357,7 +522,8 @@ public class StudentManage extends JPanel{
 		try {
 			while(resultSet.next()) {
 				StudentObject student = studentControl.loadStudent(resultSet.getInt(1));
-				String A[] = {"" + count, "" + student.getIdStudent(), student.getName(), student.getClassSt(), student.getBirthday(), student.getAddress(), student.getEmail(), "Dang hoc"};
+				String A[] = {"" + count, "" + student.getIdStudent(), student.getName(), 
+						student.getClassSt(), student.getBirthday(), student.getAddress(), student.getEmail(), "Dang hoc"};
 	        	studentModel.addRow(A);
 	        	count ++;
 			}

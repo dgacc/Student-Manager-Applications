@@ -10,6 +10,7 @@ import java.awt.event.ComponentListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+@SuppressWarnings("serial")
 public class MainFrame extends JFrame{
 	private JMenuBar jmbMenu;
 	private JMenu jmHome, jmTtinTK, jmTaoTK, jmDangNhap, 

@@ -21,7 +21,8 @@ import object.*;
 import control.*;
 
 public class TimeTable extends JPanel{
-	private JLabel jlTitle, jlSearch;
+	private JPanel jpHeader;
+	private JLabel jlTitle, jlSearch,jlName, jlMssv;
 	private JTextField jtfSearch;
 	private JButton jbSearch;
 	private JTable jtbTimeTable, jtbCharts;
@@ -31,17 +32,20 @@ public class TimeTable extends JPanel{
 	private String timeTableColumn[] = {"Day", "Time", "Adress", "IdClass", "IdSubject", "NameClass", "Note"};
 	private String timeTableRow[][] = {};
 	private String chartsColumn[] = {"","Thu 2", "Thu3", "Thu 4", "Thu 5", "Thu 6", "Thu 7", "CN"};
-	private String time[] = {"Tiet 1", "Tiet 2", "Tiet 3", "Tiet 4", "Tiet 5", "Tiet 6", "", "Tiet 7", "Tiet 8", "Tiet 9", "Tiet 10", "Tiet 11", "Tiet 12"};
+	private String time[] = {"Tiet 1", "Tiet 2", "Tiet 3", "Tiet 4", "Tiet 5", "Tiet 6", "Tiet 7", "Tiet 8", "Tiet 9", "Tiet 10", "Tiet 11", "Tiet 12"};
 	private String chartsRow[][] = {};
 	ConnectDatabase connectDatabase;
 	StudentClassControl studentClassControl;
 	StudentControl studentControl;
 	RegistrationControl registrationControl;
 	public TimeTable() {
-		jlTitle = new JLabel();
-		jlSearch = new JLabel("TimeTable search of:");
+		jpHeader = new JPanel();
+		jlTitle = new JLabel("Thời khóa biểu");
+		jlName = new JLabel();
+		jlMssv = new JLabel();
+		jlSearch = new JLabel("Tìm thời khóa biểu cho:");
 		jtfSearch = new JTextField();
-		jbSearch =  new JButton("Search");
+		jbSearch =  new JButton("Tìm kiếm");
 		connectDatabase = new ConnectDatabase();
 		studentClassControl = new StudentClassControl();
 		studentControl = new StudentControl();
@@ -74,38 +78,70 @@ public class TimeTable extends JPanel{
 		jtbCharts.setFont(new Font("Arial", 1, 12));
 		jcpCharts = new JScrollPane(jtbCharts);
 		
+		
+		
 		timeTableHeader = jtbTimeTable.getTableHeader();
 		timeTableHeader.setFont(new Font("Arial", 1, 15));
+		timeTableHeader.setBackground(new Color(0, 170, 207));
+		timeTableHeader.setForeground(Color.WHITE);
+		
+		
 		
 		chartsHeader = jtbCharts.getTableHeader();
 		chartsHeader.setFont(new Font("Arial", 1, 15));
+		chartsHeader.setBackground(new Color(0, 170, 207));
+		chartsHeader.setForeground(Color.WHITE);
 	}
 	
 	public void runTimeTable(int x, int y) {
 		setSize(x, y);
 		setLayout(null);
 		
-		add(jlTitle);
-		jlTitle.setFont(new Font("Arial", 1, x/50));
-		jlTitle.setBounds(x/3, 0, x/2, y/25);
-		
-		add(jlSearch);
-		jlSearch.setFont(new Font("Arial", 1, 13));
-		jlSearch.setBounds(0, 50, x/8, 20);
-		
-		add(jtfSearch);
-		jtfSearch.setFont(new Font("Arial", 1, 13));
-		jtfSearch.setBounds(x/8,50, x/8, 20);
-		
-		add(jbSearch);
-		jbSearch.setFont(new Font("Arial", 1, 13));
-		jbSearch.setBounds(x/4, 50, x/12, 20);
-		
 		add(jcpTimeTable);
-		jcpTimeTable.setBounds(0, y/8, x, y/3);
+		jcpTimeTable.setBounds(30, y/8, x- 60, y/3);
+		
+		add(jpHeader);
+		jpHeader.setLayout(null);
+		jpHeader.setSize(x, y/7);
+		jpHeader.setBackground(new Color(0, 170, 207));
+		
+		jpHeader.add(jlTitle);
+		jlTitle.setFont(new Font("Arial", 1, 30));
+		jlTitle.setBounds(0, 10, x, y/25);
+		jlTitle.setForeground(Color.WHITE);
+		jlTitle.setHorizontalAlignment((int) CENTER_ALIGNMENT);
+		
+		jpHeader.add(jlSearch);
+		jlSearch.setFont(new Font("Arial", 1, 13));
+		jlSearch.setBounds(x/2, 50, x/8, 20);
+		jlSearch.setForeground(Color.WHITE);
+		
+		jpHeader.add(jtfSearch);
+		jtfSearch.setFont(new Font("Arial", 1, 13));
+		jtfSearch.setBounds( 5*x/ 8,50, x/8, 20);
+		
+		jpHeader.add(jbSearch);
+		jbSearch.setFont(new Font("Arial", 1, 13));
+		jbSearch.setBounds( 6*x/8 + 10, 50, x/12, 20);
+		jbSearch.setForeground(Color.WHITE);
+		jbSearch.setBackground(new Color(66, 103, 178));
+		
+		
+		
+		jpHeader.add(jlName);
+		jlName.setFont(new Font("Arial", 1, 13));
+		jlName.setBounds(30, 50, x/2, y/25);
+		jlName.setForeground(Color.WHITE);
+		
+		jpHeader.add(jlMssv);
+		jlMssv.setFont(new Font("Arial", 1, 13));
+		jlMssv.setBounds(x/4, 50, x/2, y/25);
+		jlMssv.setForeground(Color.WHITE);
+		
+		
 
 		add(jcpCharts);
-		jcpCharts.setBounds(0, y/2, x, y/2-20);
+		jcpCharts.setBounds(30, y/2, x - 60, y/2-20);
 		jtbCharts.setRowHeight(jcpCharts.getHeight()/14);
 		
 		jbSearch.addActionListener(new ActionListener() {
@@ -139,7 +175,9 @@ public class TimeTable extends JPanel{
 		timeTableModel.setRowCount(0);
 		chartsModel.setRowCount(0);
 		registrationControl.time(TimeTable, student);
-		jlTitle.setText("TimeTable of "+ student.getIdStudent());
+		jlTitle.setText("Thời khóa biểu" );
+		jlMssv.setText("Mssv: " + student.getIdStudent());
+		jlName.setText("Họ và tên: " +student.getName());
 		String load = "select idClass from dangki where status = 'thanh cong' and idStudent = " + student.getIdStudent();
 		ResultSet re = connectDatabase.returnData(load);
 		
@@ -156,8 +194,8 @@ public class TimeTable extends JPanel{
 		}
 		
 		String[] B = new String[8];
-		B[7] = null;
-		for(int i =0; i<13; i++) {
+//		B[7] = null;
+		for(int i =0; i<12; i++) {
 			B[0] = time[i];
 			for(int j=1; j<7; j++) {
 				if(i < 6) {
