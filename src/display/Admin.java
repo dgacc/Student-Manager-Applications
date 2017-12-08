@@ -17,7 +17,7 @@ import object.AccountObject;
 
 public class Admin extends JPanel{
 	private JPanel jpLeft, jpRight, jpHeader;
-	private JLabel jlIcon1, jlIcon2, jlIcon3;
+	private JLabel jlIcon1, jlIcon2, jlIcon3, jlTitle;
 	private JButton jbInf, jbStudent, jbAccount, jbSubJect, jbClass, jbLogOut, jbChangePass;
 	
 	CardLayout card;
@@ -35,9 +35,10 @@ public class Admin extends JPanel{
 		jpLeft = new JPanel();
 		jpRight = new JPanel();
 		jpHeader = new JPanel();
+		jlTitle = new JLabel("MANAGER");
 		
 		jlIcon1 = new JLabel();
-		jlIcon1.setIcon(new ImageIcon("icon/linhtinh/word.png"));
+		jlIcon1.setIcon(new ImageIcon("icon/frame/manager1.png"));
 		
 		jlIcon2 = new JLabel();
 		jlIcon2.setIcon(new ImageIcon("icon/linhtinh/pen.png"));
@@ -77,12 +78,21 @@ public class Admin extends JPanel{
 		
 		jpLeft.add(jpHeader);
 		jpHeader.setLayout(null);
-		jpHeader.setSize(x/6, y/10);
+		jpHeader.setSize(x/6, y/5);
 		jpHeader.setBackground(new Color(0, 170, 207));
 		
+		
+		jpHeader.add(jlTitle);
+		jlTitle.setFont(new Font("Arial", 1, 30));
+		jlTitle.setBounds(0, 10, x, 30);
+		jlTitle.setForeground(Color.WHITE);
+		jlTitle.setHorizontalAlignment((int) CENTER_ALIGNMENT);
+		
 		//them icon ban do the gioi
-//		jpLeft.add(jlIcon1);
-//		jlIcon1.setBounds(10, 10, 128, 128);
+		jpLeft.add(jlIcon1);
+		jlIcon1.setBounds(10, 10,150, 150);
+		jlIcon1.setHorizontalAlignment((int) CENTER_ALIGNMENT);
+		
 		
 		//them icon chiec but
 //		jpLeft.add(jlIcon2);

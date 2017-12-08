@@ -79,7 +79,7 @@ public class StudentManage extends JPanel{
 		jlUser = new JLabel("UserName:"); 
 		jlPass = new JLabel("PassWord:");
 		jlGtinh = new JLabel("Sex:");
-		jlNgaysinh = new JLabel("DateOfBirthday:"); 
+		jlNgaysinh = new JLabel("Birthday:"); 
 		jlQueQuan = new JLabel("Address:");
 		jlEmail = new JLabel("Email:"); 
 		jlSdt = new JLabel("Phone:");
@@ -163,7 +163,7 @@ public class StudentManage extends JPanel{
 		
 		
 		add(jcpStudent);
-		jcpStudent.setBounds(0, y /2 + 20, x, y/2 - 30);
+		jcpStudent.setBounds(0, y /2 + 20, x, y/2 - 60);
 		
 		
 		
@@ -289,6 +289,9 @@ public class StudentManage extends JPanel{
 		jbDeleteStudent.setBounds(2*x/9 - 10 , 140, x/9 - 20, 20);
 		jbDeleteStudent.setFont(new Font("Arial", 1, 15));
 		
+		
+		
+		
 	
 		add(jpCenter);
 		jpCenter.setLayout(null);
@@ -301,11 +304,11 @@ public class StudentManage extends JPanel{
 		
 		jpCenter.add(jtfName);
 		jtfName.setFont(new Font("Arial", 1, 14));
-		jtfName.setBounds( x/10 + 10, 60, x/5, 30);
+		jtfName.setBounds( x/10 + 10, 60, x/5, 20);
 
 		jpCenter.add(jlGtinh);
 		jlGtinh.setBounds(10, 100, x/10, 30);
-		jlGtinh.setFont(new Font("Arial", 1, 20));
+		jlGtinh.setFont(new Font("Arial", 1, 13));
 //		jlGtinh.setIcon(new ImageIcon("icon/add/gt.png"));
 		
 		jpCenter.add(jcbSex);
@@ -318,15 +321,15 @@ public class StudentManage extends JPanel{
 //		jlNgaysinh.setIcon(new ImageIcon("icon/add/date.png"));
 		
 		jpCenter.add(jcbDay);
-		jcbDay.setBounds( x/10 + 10, 140, x/12, 20);
+		jcbDay.setBounds( x/10 + 10, 140, x/15 - 5, 20);
 		jcbDay.setFont(new Font("Arial", 1, 13));
 		
 		jpCenter.add(jcbMonth);
-		jcbMonth.setBounds( x/10 + 10, 140, x/12, 20);
+		jcbMonth.setBounds( 1*x/6 + 10 , 140, x/15 - 5, 20);
 		jcbMonth.setFont(new Font("Arial", 1, 13));
 		
 		jpCenter.add(jcbYear);
-		jcbYear.setBounds( x/10 + 10, 140, x/12, 20);
+		jcbYear.setBounds( 7*x/30 + 10, 140, x/15 -5, 20);
 		jcbYear.setFont(new Font("Arial", 1, 13));
 		
 		jpCenter.add(jlQueQuan);

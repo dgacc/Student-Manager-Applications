@@ -17,6 +17,7 @@ import javax.swing.table.DefaultTableModel;
 import Connect.ConnectDatabase;
 
 public class SubjectManage extends JPanel{
+	private JPanel jpHeader;
 	private JLabel jlTitle, jlId, jlName, jlSpecialized, jlCount, jlFactor, jlNote;
 	private JTextField jtfSearch, jtfId, jtfName, jtfNote;
 	private JTable jtbSubjectManagement;
@@ -39,6 +40,8 @@ public class SubjectManage extends JPanel{
 	private String factorValue[] = {"0.8", "0.7", "0.5"};
 	int count = 1;
 	public SubjectManage() {
+		
+		jpHeader = new JPanel();
 		jlTitle = new JLabel("Subject Managet");
 		jlId = new JLabel("Id:");
 		jlName = new JLabel("Name:");
@@ -83,22 +86,50 @@ public class SubjectManage extends JPanel{
 		setSize(x, y);
 		setLayout(null);
 		
-		add(jlTitle);
-		jlTitle.setFont(new Font("Arial", 1, x/35));
-		jlTitle.setBounds(x/3, 0, x/3, 30);
 		
 		add(jcpPane);
 		jcpPane.setBounds(0, 80, x, y-330);
 		
-		add(jcbSpecialized);
+		add(jpHeader);
+		jpHeader.setLayout(null);
+		jpHeader.setSize(x, y/7);
+		jpHeader.setBackground(new Color(0, 170, 207));
+		
+		jpHeader.add(jlTitle);
+		jlTitle.setFont(new Font("Arial", 1, 30));
+		jlTitle.setBounds(0, 10, x, y/25);
+		jlTitle.setForeground(Color.WHITE);
+		jlTitle.setHorizontalAlignment((int) CENTER_ALIGNMENT);
+		
+
+		jpHeader.add(jbSearch);
+		jbSearch.setFont(new Font("Arial", 1, 13));
+		jbSearch.setBounds( 6*x/8 + 10, 50, x/10, 20);
+		jbSearch.setForeground(Color.WHITE);
+		jbSearch.setBackground(new Color(66, 103, 178));
+		
+		
+		jpHeader.add(jtfSearch);
+		jtfSearch.setFont(new Font("Arial", 1, 13));
+		jtfSearch.setBounds( 5*x/ 8,50, x/8, 20);	
+		
+		jpHeader.add(jcbSpecialized);
 		jcbSpecialized.setBounds(10, 50, 200, 20);
 		
-		add(jtfSearch);
-		jtfSearch.setBounds(x*2/3, 50, x/6, 20);
-		jtfSearch.setFont(new Font("Arial", 1, 12));
 		
-		add(jbSearch);
-		jbSearch.setBounds(x*5/6, 50, 150, 20);
+		
+//		add(jcpPane);
+//		jcpPane.setBounds(0, 80, x, y-330);
+		
+//		add(jcbSpecialized);
+//		jcbSpecialized.setBounds(10, 50, 200, 20);
+//		
+//		add(jtfSearch);
+//		jtfSearch.setBounds(x*2/3, 50, x/6, 20);
+//		jtfSearch.setFont(new Font("Arial", 1, 12));
+//		
+//		add(jbSearch);
+//		jbSearch.setBounds(x*5/6, 50, 150, 20);
 		
 		add(jlId);
 		jlId.setFont(new Font("Arial", 1, 14));

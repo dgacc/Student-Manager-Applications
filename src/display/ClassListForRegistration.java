@@ -18,6 +18,7 @@ import control.StudentClassControl;
 import object.StudentClassObject;
 
 public class ClassListForRegistration extends JPanel{
+	private JPanel jpHeader;
 	private JLabel jlTitle;
 	private JTable jtbClassList;
 	private DefaultTableModel classModel;
@@ -31,6 +32,9 @@ public class ClassListForRegistration extends JPanel{
 	StudentClassControl studentClassControl;
 	int count = 1;
 	public ClassListForRegistration() {
+		
+		
+		jpHeader = new JPanel();
 		jlTitle = new JLabel("Class List For Registration");
 		
 		classModel = new DefaultTableModel(listRow, listColumn);
@@ -45,8 +49,9 @@ public class ClassListForRegistration extends JPanel{
 		
 		classListHeader = jtbClassList.getTableHeader();
 		classListHeader.setFont(new Font("Arial", 1, 15));
-		classListHeader.setBackground(Color.GRAY);
-		classListHeader.setForeground(Color.white);
+		classListHeader.setBackground(new Color(0, 170, 207));
+		classListHeader.setForeground(Color.WHITE);
+		
 		
 		
 	}
@@ -55,19 +60,33 @@ public class ClassListForRegistration extends JPanel{
 		setSize(x, y);
 		setLayout(null);
 		
-		add(jlTitle);
-		jlTitle.setFont(new Font("Arial", 1, 25));
-		jlTitle.setBounds(x/3, 0, x/3, 30);
-		
-		add(jbSearch);
-		jbSearch.setFont(new Font("Arial", 1, 15));
-		jbSearch.setBounds(x*5/6, 50, 150, 20);
-		
-		add(jtfSearch);
-		jtfSearch.setBounds(x*2/3, 50, x/6, 20);
-		
 		add(jcpList);
-		jcpList.setBounds(0, 80, x, y-100);
+		jcpList.setBounds(30, y/8, x- 60, 6*y/7 - 10);
+		
+		add(jpHeader);
+		jpHeader.setLayout(null);
+		jpHeader.setSize(x, y/7);
+		jpHeader.setBackground(new Color(0, 170, 207));
+		
+		jpHeader.add(jlTitle);
+		jlTitle.setFont(new Font("Arial", 1, 30));
+		jlTitle.setBounds(0, 10, x, y/25);
+		jlTitle.setForeground(Color.WHITE);
+		jlTitle.setHorizontalAlignment((int) CENTER_ALIGNMENT);
+		
+		jpHeader.add(jtfSearch);
+		jtfSearch.setFont(new Font("Arial", 1, 13));
+		jtfSearch.setBounds( 5*x/ 8,50, x/8, 20);
+		
+		jpHeader.add(jbSearch);
+		jbSearch.setFont(new Font("Arial", 1, 13));
+		jbSearch.setBounds( 6*x/8 + 10, 50, x/12, 20);
+		jbSearch.setForeground(Color.WHITE);
+		jbSearch.setBackground(new Color(66, 103, 178));
+		
+		
+//		add(jcpList);
+//		jcpList.setBounds(0, 80, x, y-100);
 		
 		loadClassTable();
 		

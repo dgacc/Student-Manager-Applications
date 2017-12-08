@@ -186,7 +186,7 @@ public class Transcript extends JPanel{
 		
 //		
 		add(jcpTranscript);
-		jcpTranscript.setBounds(30, y/2 - 60, x - 60, y/2);
+		jcpTranscript.setBounds(30, y/2 - 60, x - 60, y/2 + 30);
 		jcpTranscript.setBackground(Color.white);
 		
 //		

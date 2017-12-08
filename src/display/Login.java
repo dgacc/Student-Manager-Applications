@@ -47,6 +47,7 @@ public class Login extends JPanel{
 		setLayout(null);
 		add(jlIcon);
 		jlIcon.setBounds(x/2-100, y/10, 200, 200);
+		jlIcon.setFocusable(true);
 		
 		add(jpHeader);
 		jpHeader.setLayout(null);

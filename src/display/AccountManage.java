@@ -19,6 +19,7 @@ import object.*;
 import control.*;
 
 public class AccountManage extends JPanel{
+	private JPanel jpHeader;
 	private JLabel jlTitle, jlId, jlName, jlUser, jlPass, jlPer, jlNote;
 	private JTextField jtfSearch, jtfId, jtfName, jtfUser, jtfPass, jtfNote;
 	private JTable jtbAccountManage;
@@ -37,6 +38,7 @@ public class AccountManage extends JPanel{
 	int count = 1;
 	
 	public AccountManage() {
+		jpHeader = new JPanel();
 		jlTitle = new JLabel("Account Manage");
 		jtfSearch = new JTextField();
 		jtfId = new JTextField();
@@ -82,9 +84,41 @@ public class AccountManage extends JPanel{
 		setSize(x, y);
 		setLayout(null);
 		
-		add(jlTitle);
-		jlTitle.setFont(new Font("Arial", 1, x/35));
-		jlTitle.setBounds(x/3, 0, x/3, 30);
+		add(jcpPane);
+		jcpPane.setBounds(0, 80, x, y-330);
+
+		add(jpHeader);
+		jpHeader.setLayout(null);
+		jpHeader.setSize(x, y/7);
+		jpHeader.setBackground(new Color(0, 170, 207));
+		
+		jpHeader.add(jlTitle);
+		jlTitle.setFont(new Font("Arial", 1, 30));
+		jlTitle.setBounds(0, 10, x, y/25);
+		jlTitle.setForeground(Color.WHITE);
+		jlTitle.setHorizontalAlignment((int) CENTER_ALIGNMENT);
+		
+		
+		jpHeader.add(jbSearch);
+		jbSearch.setFont(new Font("Arial", 1, 13));
+		jbSearch.setBounds( 6*x/8 + 10, 50, x/10, 20);
+		jbSearch.setForeground(Color.WHITE);
+		jbSearch.setBackground(new Color(66, 103, 178));
+		
+		
+		jpHeader.add(jtfSearch);
+		jtfSearch.setFont(new Font("Arial", 1, 13));
+		jtfSearch.setBounds( 5*x/ 8,50, x/8, 20);	
+		
+		jpHeader.add(jcbPermission);
+		jcbPermission.setModel(permissionModel);
+		jcbPermission.setBounds(10, 50, 100, 20);
+
+
+		
+//		add(jlTitle);
+//		jlTitle.setFont(new Font("Arial", 1, x/35));
+//		jlTitle.setBounds(x/3, 0, x/3, 30);
 		
 		add(jlId);
 		jlId.setFont(new Font("Arial", 1, 14));
@@ -133,20 +167,7 @@ public class AccountManage extends JPanel{
 		add(jtfNote);
 		jtfNote.setFont(new Font("Arial", 1, 14));
 		jtfNote.setBounds(x*2/3, y-140, x/5, 30);
-		
-		add(jbSearch);
-		jbSearch.setFont(new Font("Arial", 1, 15));
-		jbSearch.setBounds(x*5/6, 50, 150, 20);
-		
-		add(jtfSearch);
-		jtfSearch.setBounds(x*2/3, 50, x/6, 20);
-		
-		add(jcbPermission);
-		jcbPermission.setModel(permissionModel);
-		jcbPermission.setBounds(10, 50, 100, 20);
-		
-		add(jcpPane);
-		jcpPane.setBounds(0, 80, x, y-330);
+			
 		
 		add(jbAddAccount);
 		jbAddAccount.setBounds(x/5, y - 80, x/5-20, 30);
